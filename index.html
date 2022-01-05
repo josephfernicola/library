@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <h1>Library</h1>
+
+    <div id="button-container">
+        <button class="newbook">New Book</button>
+    </div>  
+        <div class="modal-popup">
+            <div class="modal-container">
+                <h2>New Book Information</h2>
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Title" name="title" required/>
+
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Author" name="author" required/> 
+
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" placeholder="Pages" name="pages" required/>  
+                
+                <label>Read?</label>
+                <input type="checkbox" id="read" name="read" required/> 
+
+                <button id="submit">Add Book</button>   
+                <div class="modal-close">X</div>      
+            </div>
+        </div>
+<div class="bookdisplay"></div>
+<script src="library.js"></script>
+</body>
+</html>
