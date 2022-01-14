@@ -1,7 +1,7 @@
 let myLibrary = []; //array of books to be displayed
 
-
-function Book(title, author, pages, read) { //constructor function - Creates new Book objects
+class Book {
+    constructor(title, author, pages, read) { //constructor function - Creates new Book objects
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -9,9 +9,8 @@ function Book(title, author, pages, read) { //constructor function - Creates new
     this.info = function() {
         return this.title + " by " + this.author + ", " + this.pages + ", " + this.read
     }
+    }
 }
-
-
 const read = document.querySelector("#read");
 
 const bookDisplay = document.querySelector(".bookdisplay");
@@ -43,7 +42,6 @@ function displayAllBooks () {
         addedBook.appendChild(removeButton);
         addedBook.appendChild(readButton);
 
-
         removeButton.addEventListener('click' , () => {
             addedBook.removeAttribute('data-index' , `${myLibrary.indexOf(ele)}`);
             addedBook.remove("book");
@@ -63,16 +61,13 @@ function displayAllBooks () {
 });
 }
 
-
 const newBook = document.querySelector(".newbook");
 const container = document.querySelector(".modal-container");
 const popup = document.querySelector(".modal-popup");
 const modalClose = document.querySelector(".modal-close");
 
-
 newBook.addEventListener('click' , () => {
     popup.classList.add('active');
-
 });
 
 modalClose.addEventListener('click' , () => {
@@ -96,7 +91,6 @@ document.getElementById("submit").addEventListener('click' , () => {
         else {
             inputRead = "Not Read"
         }
-
     addBookToLibrary( 
         inputTitle,
          inputAuthor,
@@ -105,6 +99,4 @@ document.getElementById("submit").addEventListener('click' , () => {
      );
     popup.classList.remove('active');
     displayAllBooks();
-
 });
-

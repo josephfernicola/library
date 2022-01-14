@@ -42,10 +42,12 @@ h2 {
   transition: visibility 0s, opacity 0.5s;
 }
 
+
 .active {
     visibility: visible;
     opacity: 1;
 }
+
 
 .modal-container {
    background-color: white;
@@ -96,7 +98,7 @@ h2 {
 }
 
 .removeButton {
-    background-color: grey
+    background-color: grey;
     width: 100px;
     height: 60px;
     font-weight: bold;
