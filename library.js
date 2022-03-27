@@ -79,12 +79,29 @@ const addBookToLibrary = (title, author, pages, read) => {
     const addedBook = new Book(title, author, pages, read);
     myLibrary.push(addedBook);
 };
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
 
-document.getElementById("submit").addEventListener('click' , () => {
-    const inputTitle = document.querySelector("#title").value
-    const inputAuthor = document.querySelector("#author").value
-    const inputPages = document.querySelector("#pages").value
-    let inputRead = document.querySelector("#read").value
+const submitButton = document.getElementById("submit");
+const titleError = document.querySelector("#title + span.error")
+const authorError = document.querySelector("#author + span.error")
+const pagesError = document.querySelector("#pages + span.error")
+
+document.getElementById("submit").addEventListener('click' , function (event) {
+    const inputTitle = document.querySelector("#title").value;
+    const inputAuthor = document.querySelector("#author").value;
+    const inputPages = document.querySelector("#pages").value;
+    let inputRead = document.querySelector("#read").value;
+    if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
+        showError();
+        event.preventDefault()
+    }
+    else {
+
+
+
+
         if (document.querySelector("#read").checked) {
             inputRead = "Read";
         }
@@ -99,4 +116,40 @@ document.getElementById("submit").addEventListener('click' , () => {
      );
     popup.classList.remove('active');
     displayAllBooks();
+    }
 });
+
+
+
+
+title.addEventListener('input' , () => {
+    if (title.validity.valid) {
+        console.log("valid");
+        titleError.textContent = "";
+        titleError.className = "error";
+
+    }
+    else {
+        console.log("invalid");
+        showError();
+    }
+})
+
+function showError() {
+    if (title.validity.valueMissing) {
+        titleError.textContent = "You need to enter a title.";
+        titleError.className = "error errorActive";
+    }
+   if (author.validity.valueMissing) {
+       authorError.textContent = "You need to enter an author.";
+       authorError.className = "error errorActive"
+   }
+   if (pages.validity.valueMissing) {
+    pagesError.textContent = "You need to enter a page number.";
+    pagesError.className = "error errorActive"
+    }
+    else if (pages.validity.rangeUnderflow) {
+        pagesError.textContent = "Page number needs to be above 0";
+        pagesError.className = "error errorActive"
+    }
+}
